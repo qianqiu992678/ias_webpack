@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org">
+
+	<head>
+		<style type="text/css">
+			.container {
+				width: 970px !important;
+			}
+		</style>
+	</head>
+
+	<body data-ng-app="app" data-ng-controller="AppCtrl">
+		<div data-ui-view>
+		</div>
+		
+		<!--tree-View-->
+		<script type="text/ng-template" id="/treeView.html">
+			<ul class="tree-view">
+				<li ng-repeat="item in treeData" ng-include="itemTemplateUrl || '/treeItem.html'"></li>
+			</ul>
+		</script>
+		<script type="text/ng-template" id="/treeItem.html">
+			<i ng-click="itemExpended(item, $event);" class="{{getItemIcon(item)}}"></i>
+			<span class="fileLogo" ng-click="itemExpended(item, $event);"></span>
+			<!--<input type="checkbox" ng-model="item.$$isChecked" class="check-box" ng-if="canChecked" ng-change="warpCallback('itemCheckedChanged', item, $event)">-->
+			<span class='text-field' ng-click="warpCallback('itemClicked', item, $event);">{{item[textField]}}({{item.num.length}}人)</span>
+			<ul ng-if="!isLeaf(item)" ng-show="item.$$isExpend">
+				<li ng-repeat="item in item.children" ng-include="itemTemplateUrl || '/treeItem.html'"></li>
+			</ul>
+		</script>
+		<!--<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=WwRWeUUKOpxuf4kn34xBtkdyPFPrNRpn"></script>-->
+	</body>
+
+</html>
