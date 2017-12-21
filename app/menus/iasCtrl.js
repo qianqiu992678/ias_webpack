@@ -5,7 +5,7 @@
 
 angular.module("iasApp").
 controller('iasCtrl',['$scope','$rootScope','$interval',function ($scope,$rootScope,$interval) {
-    alert('iasCtrl');
+    alert('iasCtrl')
     $('.body').on('click', function (e) {
         if(!$(e.target).hasClass('category-item-name')){
             $('.system-items.active').removeClass('active')
