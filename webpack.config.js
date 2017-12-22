@@ -1,5 +1,5 @@
 module.exports={
-	devtool:'eval-source-map',
+	//devtool:'eval-source-map',
 	entry:__dirname+"/index.js",
 	output:{
 		path:__dirname+"/app/js",
@@ -12,11 +12,11 @@ module.exports={
 	},
 	module:{
 		loaders:[
-			{test:/\.html$/,loader:'row-loader'},
+//			{test:/\.html$/,loader:'row-loader'},
 			{test:/\.css$/,loader:'style-loader!css-loader'},
 			//{test: /\.scss$/, loader: 'style-loader!css-loader!sass-loader'},
             //{test: /\.(png|jpg|ttf)$/, loader: 'url-loader?limit=8192'},
-            {test: /\.js$/,exclude: /node_modules/,loader: 'babel-loader'}
+//          {test: /\.js$/,exclude: /node_modules/,loader: 'babel-loader'}
 		]
 	}
 }

@@ -2,51 +2,51 @@
   "PMS":[
     {
       "sys":"PMS Control",
-      "state":"PMS.PMSControll"
+      "state":"ias.PMS.PMSControll"
     },
     {
       "sys":"PMS Single-line",
-      "state":"PMS.PMSSingleLine"
+      "state":"ias.PMS.PMSSingleLine"
     }
   ],
   "Cargo":[
     {
       "sys":"Ballast/DrillW.Sys",
-      "state":"Cargo.BallastDrillW"
+      "state":"ias.Cargo.BallastDrillW"
     },
     {
       "sys":"Base Oil",
-      "state":"Cargo.BaseOil"
+      "state":"ias.Cargo.BaseOil"
     },
     {
       "sys":"BHS system",
-      "state":"Cargo.BHS"
+      "state":"ias.Cargo.BHS"
     },
     {
       "sys":"FW Cargo",
-      "state":"Cargo.FWCargo"
+      "state":"ias.Cargo.FWCargo"
     },
     {
       "sys":"FO Cargo",
-      "state":"Cargo.FOCargo"
+      "state":"ias.Cargo.FOCargo"
     },
     {
       "sys":"LFL*",
-      "state":"Cargo.LFL"
+      "state":"ias.Cargo.LFL"
     },
     {
       "sys":"Liquid Mud/Brine",
-      "state":"Cargo.LiquidMudBrine"
+      "state":"ias.Cargo.LiquidMudBrine"
     },
     {
       "sys":"Cargo Summary",
-      "state":"Cargo.CargoSummary"
+      "state":"ias.Cargo.CargoSummary"
     }
   ],
   "Engines":[
     {
       "sys":"Main Engine 1",
-      "state":"Engine.ME1"
+      "state":"ias.Engine.ME1"
     },
     {
       "sys":"Main Engine 2",
@@ -54,145 +54,145 @@
     },
     {
       "sys":"Main Engine 3",
-      "state":"Engine.ME3"
+      "state":"ias.Engine.ME3"
     },
     {
       "sys":"Main Engine 4",
-      "state":"Engine.ME4"
+      "state":"ias.Engine.ME4"
     },
     {
       "sys":"LO System",
-      "state":"Engine.LO"
+      "state":"ias.Engine.LO"
     },
     {
       "sys":"FO System",
-      "state":"Engine.FO"
+      "state":"ias.Engine.FO"
     }
   ],
   "Propulsions":[
     {
       "sys":"Thruster Overview",
-      "state":"Propulsions.ThrusterOverview"
+      "state":"ias.Propulsions.ThrusterOverview"
     },
     {
       "sys":"Bow Thruster 1",
-      "state":"Propulsions.BowThruster1"
+      "state":"ias.Propulsions.BowThruster1"
     },
     {
       "sys":"Bow Thruster 2",
-      "state":"Propulsions.BowThruster2"
+      "state":"ias.Propulsions.BowThruster2"
     },
     {
       "sys":"Main Prop.PS",
-      "state":"Propulsions.MainPropPS"
+      "state":"ias.Propulsions.MainPropPS"
     },
     {
       "sys":"Main Prop.SB",
-      "state":"Propulsions.MainPropSB"
+      "state":"ias.Propulsions.MainPropSB"
     }
   ],
   "Cooling":[
     {
       "sys":"Cooling Overview",
-      "state":"Cooling.CoolingOverview"
+      "state":"ias.Cooling.CoolingOverview"
     },
     {
       "sys":"SW Cooling Sys.1",
-      "state":"Cooling.SWCooling1"
+      "state":"ias.Cooling.SWCooling1"
     },
     {
       "sys":"SW Cooling Sys.2",
-      "state":"Cooling.SWCooling2"
+      "state":"ias.Cooling.SWCooling2"
     },
     {
       "sys":"FW Cooling Sys.1",
-      "state":"Cooling.FWCooling1"
+      "state":"ias.Cooling.FWCooling1"
     },
     {
       "sys":"FW Cooling Sys.2",
-      "state":"Cooling.FWCooling2"
+      "state":"ias.Cooling.FWCooling2"
     },
     {
       "sys":"FW Cooling Sys.3",
-      "state":"Cooling.FWCooling3"
+      "state":"ias.Cooling.FWCooling3"
     }
   ],
   "Misc":[
     {
       "sys":"Extended Alarm System",
-      "state":"Misc.ExtendedAlarm"
+      "state":"ias.Misc.ExtendedAlarm"
     },
     {
       "sys":"Running Hours",
-      "state":"Misc.RunningHours"
+      "state":"ias.Misc.RunningHours"
     },
     {
       "sys":"Miscellaneous",
-      "state":"Misc.Miscellaneous"
+      "state":"ias.Misc.Miscellaneous"
     },
     {
       "sys":"EITrq Overview",
-      "state":"Misc.EITrqOverview"
+      "state":"ias.Misc.EITrqOverview"
     },
     {
       "sys":"Bilge System",
-      "state":"Misc.Bilge"
+      "state":"ias.Misc.Bilge"
     },
     {
       "sys":"Fire Line System",
-      "state":"Misc.FireLine"
+      "state":"ias.Misc.FireLine"
     },
     {
       "sys":"Waste/Sludge",
-      "state":"Misc.WasteSludge"
+      "state":"ias.Misc.WasteSludge"
     },
     {
       "sys":"Hydrophore",
-      "state":"Misc.Hydrophore"
+      "state":"ias.Misc.Hydrophore"
     },
     {
       "sys":"Sewage Discharge",
-      "state":"Misc.SewageDischarge"
+      "state":"ias.Misc.SewageDischarge"
     },
     {
       "sys": "Starting Air/Instr Air",
-      "state":"Misc.StartingInstrAir"
+      "state":"ias.Misc.StartingInstrAir"
     },
     {
       "sys":"Stabtank level",
-      "state":"Misc.StabtankLevel"
+      "state":"ias.Misc.StabtankLevel"
     }
   ],
   "Trend":[
     {
       "sys":"Trend",
-      "state":"Trend.Trend"
+      "state":"ias.Trend.Trend"
     }
   ],
   "IAS":[
     {
       "sys":"IAS Login",
-      "state":"IAS.IASLogin"
+      "state":"ias.IAS.IASLogin"
     },
     {
       "sys":"IO Browser",
-      "state":"IAS.IOBrowser"
+      "state":"ias.IAS.IOBrowser"
     },
     {
       "sys":"Com Network",
-      "state":"IAS.ComNetwork"
+      "state":"ias.IAS.ComNetwork"
     },
     {
       "sys":"Com Device",
-      "state":"IAS.ComDevice"
+      "state":"ias.IAS.ComDevice"
     },
     {
       "sys":"ECI-VRN-ODX",
-      "state":"IAS.ECIVRNODX"
+      "state":"ias.IAS.ECIVRNODX"
     },
     {
       "sys":"NMEA",
-      "state":"IAS.NMEA"
+      "state":"ias.IAS.NMEA"
     },
     {
       "sys":"Command Overview",
@@ -200,28 +200,28 @@
     },
     {
       "sys":"Command Management",
-      "state":"IAS.CommandManagement"
+      "state":"ias.IAS.CommandManagement"
     },
     {
       "sys":"IAS Setup",
-      "state":"IAS.IASSetup"
+      "state":"ias.IAS.IASSetup"
     },
     {
       "sys":"Write Disable",
-      "state":"IAS.WriteDisable"
+      "state":"ias.IAS.WriteDisable"
     },
     {
       "sys":"Diagnostic performance",
-      "state":"IAS.DiagnosticPerformance"
+      "state":"ias.IAS.DiagnosticPerformance"
     },
     {
       "sys":"Force Browser",
-      "state":"IAS.ForceBrowser"
+      "state":"ias.IAS.ForceBrowser"
     },
 
     {
       "sys":"Task Overview",
-      "state":"IAS.TaskOverview"
+      "state":"ias.IAS.TaskOverview"
     }
   ]
 }

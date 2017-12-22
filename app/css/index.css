@@ -230,6 +230,7 @@ output {
   left: 0;
   background-color: #00275D;
   z-index: 1000;
+  cursor: pointer;
 }
 .ias .head .displaybar-menu .category-item .system-item {
   border: 2px solid transparent;

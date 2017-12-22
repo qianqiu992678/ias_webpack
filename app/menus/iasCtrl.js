@@ -3,13 +3,14 @@
  */
 
 
-angular.module("iasApp").
-controller('iasCtrl',['$scope','$rootScope','$interval',function ($scope,$rootScope,$interval) {
+//iasApp
+angular.module("iasApp")
+.controller("iasCtrl",['$scope','$rootScope','$interval',function ($scope,$rootScope,$interval) {
     alert('iasCtrl')
     $('.body').on('click', function (e) {
         if(!$(e.target).hasClass('category-item-name')){
             $('.system-items.active').removeClass('active')
-        };
+        };				
         if(!$(e.target).hasClass('alarm-select-head')){
             $('.alarm-items.active').removeClass('active')
         };
@@ -47,6 +48,7 @@ controller('iasCtrl',['$scope','$rootScope','$interval',function ($scope,$rootSc
             }
         });
     };
+    $rootScope.getTankMessage();
     //获取所有泵浦信息方法
     $rootScope.getPumpMessage= function () {
         $.ajax({
@@ -67,10 +69,9 @@ controller('iasCtrl',['$scope','$rootScope','$interval',function ($scope,$rootSc
             }
         });
     }
-
+    $rootScope.getPumpMessage();
     //定义泵启停方法
     $rootScope.pumpIsRunningControl= function (e,isRunning) {
-
         console.log('接收的参数为：', e.target,isRunning);
         var pumpName=$(e.target).parent().attr('pump-name');
         console.log('发送的参数为：',pumpName,isRunning)
@@ -86,6 +87,6 @@ controller('iasCtrl',['$scope','$rootScope','$interval',function ($scope,$rootSc
         });
     }
     //定义调速停方法
-    $rootScope.getPumpMessage();
-    $rootScope.getTankMessage();
+    
+    
 }]);
