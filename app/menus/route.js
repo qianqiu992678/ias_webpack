@@ -21,29 +21,21 @@ module.exports=function(iasApp){
 //                      }]
 //                  }
 //	        	})
-//	            .state('test',{
-//	                url:'/test',
-//	                template:'<div ui-view></div>',
-//	                controller:'test1Ctrl',
+	            .state('test',{
+	                url:'/test',
+	                template:'<div ui-view></div>'
+	            })
+	            .state('test.test1',{
+	                url:'/test1',
+	                templateUrl:'app/menus/test/test1.html',
+	                controller:'test1Ctrl',
 //	                resolve:{
 //                  	deps: ['uiLoad', '$ocLazyLoad', function(uiLoad, $ocLazyLoad) {
 //                          return uiLoad.load('app/menus/test/test1Ctrl.js').then(function() {
 //                              return $ocLazyLoad.load('toaster')});
 //                      }]
 //                  }
-//	            })
-//	            .state('test.test1',{
-//	                url:'/test1',
-//	                templateUrl:'app/menus/test/test1.html',
-//	                //template:'<div>test1</div>',
-//	                controller:'test1Ctrl',
-//	                resolve:{
-//                  	deps: ['uiLoad', '$ocLazyLoad', function(uiLoad, $ocLazyLoad) {
-//                          return uiLoad.load('app/menus/test/test1Ctrl.js').then(function() {
-//                              return $ocLazyLoad.load('toaster')});
-//                      }]
-//                  }
-//	            })
+	            })
 	            .state('ias',{
 	            	abstract: true,
                     url: '/ias',
@@ -361,6 +353,13 @@ module.exports=function(iasApp){
 	                templateUrl:'app/menus/IAS/TaskOverview.html',
 	                controller:'TaskOverviewCtrl'
 	            })
+	    }])
+	    .controller('test1Ctrl',['$scope','$rootScope',function($scope,$rootScope){
+	    	console.log('test1Ctrl');
+		    //console.log($rootScope.pumpMessage)
+		    //console.log('有引号的：',$rootScope.pumpMessage['ballast/drillPum'])
+		    console.log('有引号的：',$rootScope.pumpMessage['ballastdrillPump'].ratedPower)
+	    	
 	    }])
 	    //iasCtrl
 	    .controller('iasCtrl',['$scope','$rootScope','$interval',function ($scope,$rootScope,$interval) {
