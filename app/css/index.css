@@ -1,3 +1,23 @@
+.test1 .testArea {
+  display: inline-block;
+  width: 20%;
+  height: 200px;
+  border: 1px solid green;
+  padding: 8px;
+  float: left;
+  position: relative;
+}
+.test1 .TK61-PST {
+  top: 30px;
+  left: 8px;
+}
+.test1 .pump-component.ballastdrillPumpT {
+  top: 300px;
+  left: 300px;
+}
+.dictionary li {
+  padding: 6px;
+}
 * {
   margin: 0;
   padding: 0;
@@ -167,14 +187,6 @@ output {
 }
 .pump-component {
   position: absolute;
-}
-.pump-component.ballastdrillPump {
-  top: 300px;
-  left: 300px;
-}
-.TK61-PS {
-  top: 300px;
-  left: 500px;
 }
 .PMSControll .MSB690Ctrl-box {
   width: 80%;

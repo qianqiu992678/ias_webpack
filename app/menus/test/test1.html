@@ -1,43 +1,72 @@
-<div>test1test1test1test1test1test1test1test1</div>
-<h1>自定义指令测试(元素):</h1>
-<ias-hello></ias-hello>
-<h1>自定义指令测试(属性):</h1>
-<div ias-hello></div>
-<h1>自定义指令测试(class):</h1>
-<div class="ias-hello"></div>
-<h1>自定义指令测试(注释):</h1>
+<!--<div>test1test1test1test1test1test1test1test1</div>-->
+<!--<h1>自定义指令测试(元素):</h1>-->
+<!--<ias-hello></ias-hello>-->
+<!--<h1>自定义指令测试(属性):</h1>-->
+<!--<div ias-hello></div>-->
+<!--<h1>自定义指令测试(class):</h1>-->
+<!--<div class="ias-hello"></div>-->
+<!--<h1>自定义指令测试(注释):</h1>-->
 <!--directive:ias-hello-->
-<h1>自定义指令测试(带参数):</h1>
-<ias-hello test-name="test"></ias-hello>
+<!--<h1>自定义指令测试(带参数):</h1>-->
+<!--<ias-hello test-name="test"></ias-hello>-->
 <!--<p ng-controller="myController">
     <input type="text" ng-model="content">
     <div my-directive="content"></div>{{content}}
 </p>-->
-<!--<ias-tpl sys-name="Ballast&Drillw"></ias-tpl>
-<h2>舱室指令</h2>
-<ias-tank-message class="TK61-PS" tank-name="{{tankMessage['TK61(PS)'].tankName}}" persent="0%" volume="{{tankMessage['TK61(PS)'].currentVolumn}}" quality="0">
-</ias-tank-message>
-<h2>色块指令测试：</h2>
-<ias-color-block wi="50" he="4" color="#000"></ias-color-block>
-<ias-color-block wi="30" he="10" color="red"></ias-color-block>
+<ul class="test1">
+	<li class="testArea">
+		<ias-tpl sys-name="Ballast&Drillw"></ias-tpl>
+	</li>
+	<li class="testArea">
+		<h2>舱室指令</h2>
+		<ias-tank-message 
+			class="TK61-PST" 
+			tank-name="{{tankMessage['TK61(PS)'].tankName}}" 
+			persent="0%" 
+			volume="{{tankMessage['TK61(PS)'].currentVolumn}}" 
+			quality="0">
+		</ias-tank-message>
+	</li>
+	<li class="testArea">
+		<h2>色块指令测试：</h2>
+		<ias-color-block wi="50" he="4" color="#000"></ias-color-block>
+		<ias-color-block wi="30" he="10" color="red"></ias-color-block>
+	</li>
+	<li class="testArea">
+		<h2>泵指令测试</h2>
+		<ias-pump-body size="50" local-remote="#00f" is-running="green"></ias-pump-body>
+		<ias-pump-body size="100" local-remote="#fff" is-running="#fff"></ias-pump-body>
+	</li>
+	<li class="testArea">
+		<h2>泵控制板指令测试</h2>
+		<ias-pump-control-pannel speed="1200"></ias-pump-control-pannel>
+	</li>
+	<li class="testArea">
+		<h2>完整泵指令测试{{pumpMessage['ballastdrillPump'].isRemote}}{{pumpMessage['ballastdrillPump'].currentSpeed}}</h2>
+		<ias-pump-component si="40" 
+			l-r="{{pumpMessage['ballastdrillPump'].isRemote}}"
+		    is-r="{{pumpMessage['ballastdrillPump'].isRunning}}" 
+		    sp="{{pumpMessage['ballastdrillPump'].currentSpeed}}"
+		    pump-name="{{pumpMessage['ballastdrillPump'].pumpName}}">
+		</ias-pump-component>
+	</li>
+	<li class="testArea"></li>
+	<li class="testArea"></li>
+	<li class="testArea"></li>
+	<li class="testArea"></li>
+	<li class="testArea"></li>
+</ul>
 
-<h2>泵指令测试</h2>
-<ias-pump-body size="50" local-remote="#00f" is-running="green"></ias-pump-body>
-<ias-pump-body size="100" local-remote="#fff" is-running="#fff"></ias-pump-body>
 
-<h2>泵控制板指令测试</h2>
-<ias-pump-control-pannel speed="1200"></ias-pump-control-pannel>
-<h2>完整泵指令测试{{pumpMessage['ballastdrillPump'].isRemote}}{{pumpMessage['ballastdrillPump'].currentSpeed}}</h2>
-<ias-pump-component si="40" l-r="{{pumpMessage['ballastdrillPump'].isRemote}}"
-                    is-r="{{pumpMessage['ballastdrillPump'].isRunning}}" sp="{{pumpMessage['ballastdrillPump'].currentSpeed}}"
-                    pump-name="{{pumpMessage['ballastdrillPump'].pumpName}}">
-</ias-pump-component>
+
+
+
+
+
+
+
 <br>
 
-<ias-pump-component si="80" l-r="{{pumpMessage['freshwaterPump'].isRemote}}"
-                    is-r="{{pumpMessage['freshwaterPump'].isRunning}}" sp="{{pumpMessage['ballastdrillPump'].currentSpeed}}"
-                    pump-name="{{pumpMessage['freshwaterPump'].pumpName}}">
-</ias-pump-component>-->
 
 
 

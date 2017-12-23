@@ -43066,7 +43066,7 @@ module.exports=function(iasApp){
 	//angular.module("iasApp")
 	iasApp
 	    .config(['$stateProvider','$urlRouterProvider',function ($stateProvider,$urlRouterProvider) {
-	    	$urlRouterProvider.otherwise('ias/PMS/PMSControll');
+	    	$urlRouterProvider.otherwise('ias/dictionary');
 	        $stateProvider
 //	        	.state('display1',{
 //	        		url:'/display1',
@@ -43079,21 +43079,8 @@ module.exports=function(iasApp){
 //                      }]
 //                  }
 //	        	})
-	            .state('test',{
-	                url:'/test',
-	                template:'<div ui-view></div>'
-	            })
-	            .state('test.test1',{
-	                url:'/test1',
-	                templateUrl:'app/menus/test/test1.html',
-	                controller:'test1Ctrl',
-//	                resolve:{
-//                  	deps: ['uiLoad', '$ocLazyLoad', function(uiLoad, $ocLazyLoad) {
-//                          return uiLoad.load('app/menus/test/test1Ctrl.js').then(function() {
-//                              return $ocLazyLoad.load('toaster')});
-//                      }]
-//                  }
-	            })
+	            
+	            
 	            .state('ias',{
 	            	abstract: true,
                     url: '/ias',
@@ -43102,6 +43089,28 @@ module.exports=function(iasApp){
 //                  resolve:{
 //                  	deps: ['uiLoad', function(uiLoad) {
 //                          return uiLoad.load('app/menus/iasCtrl.js')
+//                      }]
+//                  }
+	            })
+	            .state('ias.dictionary',{
+	                url:'/dictionary',
+	                templateUrl:'app/menus/test/dictionary.html',
+	                controller:'dictionaryCtrl',
+//	                resolve:{
+//                  	deps: ['uiLoad', '$ocLazyLoad', function(uiLoad, $ocLazyLoad) {
+//                          return uiLoad.load('app/menus/test/test1Ctrl.js').then(function() {
+//                              return $ocLazyLoad.load('toaster')});
+//                      }]
+//                  }
+	            })
+	            .state('ias.test1',{
+	                url:'/test1',
+	                templateUrl:'app/menus/test/test1.html',
+	                controller:'test1Ctrl',
+//	                resolve:{
+//                  	deps: ['uiLoad', '$ocLazyLoad', function(uiLoad, $ocLazyLoad) {
+//                          return uiLoad.load('app/menus/test/test1Ctrl.js').then(function() {
+//                              return $ocLazyLoad.load('toaster')});
 //                      }]
 //                  }
 	            })
@@ -43412,13 +43421,7 @@ module.exports=function(iasApp){
 	                controller:'TaskOverviewCtrl'
 	            })
 	    }])
-	    .controller('test1Ctrl',['$scope','$rootScope',function($scope,$rootScope){
-	    	console.log('test1Ctrl');
-		    //console.log($rootScope.pumpMessage)
-		    //console.log('有引号的：',$rootScope.pumpMessage['ballast/drillPum'])
-		    console.log('有引号的：',$rootScope.pumpMessage['ballastdrillPump'].ratedPower)
-	    	
-	    }])
+	    
 	    //iasCtrl
 	    .controller('iasCtrl',['$scope','$rootScope','$interval',function ($scope,$rootScope,$interval) {
 	    	console.log('iasCtrl');
@@ -43509,6 +43512,17 @@ module.exports=function(iasApp){
 		    }
 		    //定义调速停方法
 		    
+	    }])
+	    .controller('test1Ctrl',['$scope','$rootScope',function($scope,$rootScope){
+	    	console.log('test1Ctrl');
+		    //console.log($rootScope.pumpMessage)
+		    //console.log('有引号的：',$rootScope.pumpMessage['ballast/drillPum'])
+		    console.log('有引号的：',$rootScope.pumpMessage['ballastdrillPump'].ratedPower)
+	    	
+	    }])
+	    .controller('dictionaryCtrl',['$scope','$rootScope',function($scope,$rootScope){
+	    	console.log('dictionaryCtrl');
+	    	
 	    }])
 	    //PMSControllCtrl
 	    .controller('PMSControllCtrl',['$scope','$rootScope','$interval',function ($scope,$rootScope,$interval) {
@@ -43737,7 +43751,33 @@ module.exports=function(iasApp){
  */
 module.exports=function(iasApp){
 	//系统单页顶部标题
-	iasApp.directive('iasTpl', function () {
+	iasApp
+	.controller('pumpBodyCtrl',['$scope', function ($scope) {
+	    console.log('pumpBodyCtrl');
+	    $('.pump-body').click(function (e) {
+	        $(e.target).parents('.pump-component').children('.pump-control-pannel').addClass('active')
+	    })
+	}])
+	.controller('pumpComponentCtrl',['$scope', function ($scope) {
+	    console.log('pumpComponentCtrl');
+	
+	}])
+	.controller('pumpControlPannelCtrl',['$scope','$rootScope', function ($scope,$rootScope) {
+	    console.log('pumpControlPannelCtrl');
+	    $('.close').click(function (e) {
+	        $(e.target).parents('.pump-control-pannel').removeClass('active');
+	    });
+	    $('.pump-start-btn').click(function (e) {
+	        console.log('start pump');
+	        $rootScope.pumpIsRunningControl(e,1);
+	
+	    });
+	    $('.pump-stop-btn').click(function (e) {
+	        console.log('stop pump');
+	        $rootScope.pumpIsRunningControl(e,false);
+	    });
+	}])
+	.directive('iasTpl', function () {
 	    return {
 	        restrict:'EA',
 	        scope:{
@@ -43863,7 +43903,7 @@ exports = module.exports = __webpack_require__(13)(undefined);
 
 
 // module
-exports.push([module.i, "* {\n  margin: 0;\n  padding: 0;\n  font-size: 12px;\n  box-sizing: border-box;\n  color: #fff;\n}\na {\n  text-decoration: none;\n}\nul,\nol {\n  list-style: none;\n}\n.lf {\n  float: left;\n}\n.rt {\n  float: right;\n}\n.close {\n  float: right;\n  border-radius: 50%;\n  padding: 0 4px;\n}\n.close:active {\n  background-color: #0000FF;\n}\noutput {\n  background-color: #000;\n  display: inline-block;\n}\n.title-tag {\n  width: 260px;\n  background-color: #00275D;\n  height: 40px;\n  border: 1px solid #aaa;\n  border-bottom-right-radius: 8px;\n  border-top-left-radius: 8px;\n  line-height: 40px;\n  text-align: center;\n  font-weight: bold;\n  color: #c0c0c0;\n  font-size: 16px;\n  position: relative;\n  top: 3px;\n  left: 3px;\n}\n.back-ahead {\n  float: right;\n  margin-right: 15px;\n  margin-top: 15px;\n}\n.back-ahead .border {\n  border: 2px solid #606060;\n  padding: 5px;\n}\n.back-ahead .border:hover {\n  background-color: #aaa;\n}\n.back-ahead .border:active {\n  background-color: #00275D;\n}\n.back-ahead .back {\n  border: 2px solid #606060;\n  padding: 5px;\n  padding-right: 10px;\n}\n.back-ahead .back:hover {\n  background-color: #aaa;\n}\n.back-ahead .back:active {\n  background-color: #00275D;\n}\n.back-ahead .ahead {\n  border: 2px solid #606060;\n  padding: 5px;\n  padding-left: 10px;\n}\n.back-ahead .ahead:hover {\n  background-color: #aaa;\n}\n.back-ahead .ahead:active {\n  background-color: #00275D;\n}\n.tank {\n  display: inline-block;\n  padding: 3px;\n  width: 115px;\n  height: 115px;\n  border: 2px solid #000;\n  background-color: #A0A0A0;\n  position: absolute;\n}\n.tank .tank-number {\n  padding: 2px;\n  border-bottom: 1px solid #000;\n  background-color: #606060;\n}\n.tank .xx {\n  padding: 2px;\n  border-bottom: 1px solid #000;\n  background-color: #606060;\n}\n.tank .capacity-detail .capacity-item {\n  margin: 3px 0;\n}\n.tank .capacity-detail .capacity-item span {\n  display: inline-block;\n  width: 80%;\n  background-color: #000;\n  text-align: right;\n  padding-right: 5px;\n  color: #00C000;\n}\n.tank .capacity-detail .capacity-item .height-level,\n.tank .capacity-detail .capacity-item .low-level,\n.tank .capacity-detail .capacity-item .is-alarm {\n  display: inline-block;\n  width: 15px;\n  height: 15px;\n  border: 1px solid #fff;\n  border-radius: 50%;\n  background-color: transparent;\n}\n.tank .capacity-detail .capacity-item .is-alarm {\n  border-radius: 0;\n}\n.tank .capacity-detail .capacity-item .height-level.active,\n.tank .capacity-detail .capacity-item .low-level.active,\n.tank .capacity-detail .capacity-item .is-alarm.active {\n  background-color: #f00;\n}\n.pump-control-pannel {\n  position: absolute;\n  width: 250px;\n  height: 100px;\n  border: 1px solid #aaa;\n  display: none;\n}\n.pump-control-pannel .drag-bar {\n  height: 20px;\n  width: 100%;\n  padding: 2px;\n  border-bottom: 1px solid #606060;\n  background-color: #224;\n}\n.pump-control-pannel .speed-set-tool {\n  margin: 5px;\n}\n.pump-control-pannel .current-speed {\n  background-color: #000;\n  display: inline-block;\n  padding: 3px;\n  width: 70px;\n  height: 22px;\n}\n.pump-control-pannel .pump-start-btn,\n.pump-control-pannel .pump-stop-btn {\n  background-color: #0086B3;\n  width: 40%;\n  margin-left: 5%;\n  margin-top: 8px;\n}\n.pump-control-pannel.active {\n  display: block;\n}\n.pump-component {\n  position: absolute;\n}\n.pump-component.ballastdrillPump {\n  top: 300px;\n  left: 300px;\n}\n.TK61-PS {\n  top: 300px;\n  left: 500px;\n}\n.PMSControll .MSB690Ctrl-box {\n  width: 80%;\n  height: 200px;\n  border: 1px dashed #999;\n  margin: 30px auto 0;\n}\n.ias {\n  width: 1600px;\n  height: 1200px;\n  background-color: #00275D;\n}\n.ias .head {\n  width: 100%;\n  height: 50px;\n}\n.ias .head .header-border {\n  border: 1px solid #606060;\n}\n.ias .head .headerItem {\n  float: left;\n}\n.ias .head .logo {\n  width: 176px;\n  padding-top: 14px ;\n  text-align: center;\n}\n.ias .head .displaybar-menu {\n  width: 960px;\n}\n.ias .head .displaybar-menu .displaybar {\n  height: 22px;\n  background-color: #000;\n  border: 1px solid #606060;\n  margin-bottom: 3px;\n  padding-left: 10px;\n  color: #f00;\n}\n.ias .head .displaybar-menu .category-item {\n  float: left;\n  position: relative;\n  height: 24px;\n  border: 1px solid #606060;\n  width: 120px;\n  text-align: center;\n}\n.ias .head .displaybar-menu .category-item:hover {\n  border-color: #fff;\n}\n.ias .head .displaybar-menu .category-item .category-item-name {\n  display: block;\n  width: 100%;\n  line-height: 21px;\n}\n.ias .head .displaybar-menu .category-item .system-items {\n  width: 190px;\n  position: absolute;\n  top: 110%;\n  left: 0;\n  background-color: #00275D;\n  z-index: 1000;\n  cursor: pointer;\n}\n.ias .head .displaybar-menu .category-item .system-item {\n  border: 2px solid transparent;\n  margin-bottom: 5px;\n  padding-left: 8px;\n}\n.ias .head .displaybar-menu .category-item .system-item:hover {\n  border-color: #fff;\n}\n.ias .head .displaybar-menu .system-items {\n  display: none;\n  text-align: left;\n  border: 2px solid #000;\n}\n.ias .head .displaybar-menu .system-items.active {\n  display: block;\n}\n.ias .head .alarms {\n  border: 1px solid #606060;\n  height: 50px;\n  width: 112px;\n  background-color: #f00;\n  line-height: 25px;\n}\n.ias .head .alarms .alarm-count {\n  width: 70%;\n  text-align: center;\n}\n.ias .head .alarms .alarm-select {\n  position: relative;\n  width: 30%;\n  height: 100%;\n  border: 2px solid transparent;\n}\n.ias .head .alarms .alarm-select .alarm-select-head {\n  display: inline-block;\n  width: 100%;\n  height: 100%;\n}\n.ias .head .alarms .alarm-select:hover {\n  border-color: #fff;\n}\n.ias .head .alarms .alarm-select .alarm-items {\n  position: absolute;\n  background-color: #00275D;\n  top: 110%;\n  right: -3px;\n  width: 112px;\n  display: none;\n  border: 2px solid #000;\n}\n.ias .head .alarms .alarm-select .alarm-items .alarm-item {\n  padding-left: 8px;\n  border: 1px solid transparent;\n}\n.ias .head .alarms .alarm-select .alarm-items .alarm-item:hover {\n  border-color: #fff;\n}\n.ias .head .alarms .alarm-select .alarm-items.active {\n  display: block;\n}\n.ias .head .silence {\n  border: 1px solid #606060;\n  padding: 0 3px;\n  text-align: center;\n  height: 100%;\n  width: 112px;\n}\n.ias .head .silence .silence-btn {\n  height: 30px;\n  line-height: 40px;\n  font-size: 16px;\n}\n.ias .head .silence .EB-select {\n  height: 20px;\n}\n.ias .head .time-design {\n  margin-left: 2px;\n  width: 224px;\n}\n.ias .head .time-design .td-com {\n  height: 24px;\n  line-height: 24px;\n  text-align: center;\n}\n.ias .head .time-design .system-time {\n  border: 1px solid #606060;\n  height: 24px;\n  line-height: 24px;\n  text-align: center;\n  margin-bottom: 2px;\n}\n.ias .head .time-design .design {\n  border: 1px solid #606060;\n  background-color: #00c000;\n  height: 24px;\n  line-height: 24px;\n  text-align: center;\n}\n.ias .main-window {\n  width: 96%;\n  height: 1090px;\n  margin: 6px auto;\n  border: 1px solid #333;\n  border-radius: 10px;\n  box-shadow: 3px 3px 5px;\n  background-color: #404040;\n}\n.ias .foot {\n  width: 100%;\n  height: 60px;\n}\n", ""]);
+exports.push([module.i, ".test1 .testArea {\n  display: inline-block;\n  width: 20%;\n  height: 200px;\n  border: 1px solid green;\n  padding: 8px;\n  float: left;\n  position: relative;\n}\n.test1 .TK61-PST {\n  top: 30px;\n  left: 8px;\n}\n.test1 .pump-component.ballastdrillPumpT {\n  top: 300px;\n  left: 300px;\n}\n.dictionary li {\n  padding: 6px;\n}\n* {\n  margin: 0;\n  padding: 0;\n  font-size: 12px;\n  box-sizing: border-box;\n  color: #fff;\n}\na {\n  text-decoration: none;\n}\nul,\nol {\n  list-style: none;\n}\n.lf {\n  float: left;\n}\n.rt {\n  float: right;\n}\n.close {\n  float: right;\n  border-radius: 50%;\n  padding: 0 4px;\n}\n.close:active {\n  background-color: #0000FF;\n}\noutput {\n  background-color: #000;\n  display: inline-block;\n}\n.title-tag {\n  width: 260px;\n  background-color: #00275D;\n  height: 40px;\n  border: 1px solid #aaa;\n  border-bottom-right-radius: 8px;\n  border-top-left-radius: 8px;\n  line-height: 40px;\n  text-align: center;\n  font-weight: bold;\n  color: #c0c0c0;\n  font-size: 16px;\n  position: relative;\n  top: 3px;\n  left: 3px;\n}\n.back-ahead {\n  float: right;\n  margin-right: 15px;\n  margin-top: 15px;\n}\n.back-ahead .border {\n  border: 2px solid #606060;\n  padding: 5px;\n}\n.back-ahead .border:hover {\n  background-color: #aaa;\n}\n.back-ahead .border:active {\n  background-color: #00275D;\n}\n.back-ahead .back {\n  border: 2px solid #606060;\n  padding: 5px;\n  padding-right: 10px;\n}\n.back-ahead .back:hover {\n  background-color: #aaa;\n}\n.back-ahead .back:active {\n  background-color: #00275D;\n}\n.back-ahead .ahead {\n  border: 2px solid #606060;\n  padding: 5px;\n  padding-left: 10px;\n}\n.back-ahead .ahead:hover {\n  background-color: #aaa;\n}\n.back-ahead .ahead:active {\n  background-color: #00275D;\n}\n.tank {\n  display: inline-block;\n  padding: 3px;\n  width: 115px;\n  height: 115px;\n  border: 2px solid #000;\n  background-color: #A0A0A0;\n  position: absolute;\n}\n.tank .tank-number {\n  padding: 2px;\n  border-bottom: 1px solid #000;\n  background-color: #606060;\n}\n.tank .xx {\n  padding: 2px;\n  border-bottom: 1px solid #000;\n  background-color: #606060;\n}\n.tank .capacity-detail .capacity-item {\n  margin: 3px 0;\n}\n.tank .capacity-detail .capacity-item span {\n  display: inline-block;\n  width: 80%;\n  background-color: #000;\n  text-align: right;\n  padding-right: 5px;\n  color: #00C000;\n}\n.tank .capacity-detail .capacity-item .height-level,\n.tank .capacity-detail .capacity-item .low-level,\n.tank .capacity-detail .capacity-item .is-alarm {\n  display: inline-block;\n  width: 15px;\n  height: 15px;\n  border: 1px solid #fff;\n  border-radius: 50%;\n  background-color: transparent;\n}\n.tank .capacity-detail .capacity-item .is-alarm {\n  border-radius: 0;\n}\n.tank .capacity-detail .capacity-item .height-level.active,\n.tank .capacity-detail .capacity-item .low-level.active,\n.tank .capacity-detail .capacity-item .is-alarm.active {\n  background-color: #f00;\n}\n.pump-control-pannel {\n  position: absolute;\n  width: 250px;\n  height: 100px;\n  border: 1px solid #aaa;\n  display: none;\n}\n.pump-control-pannel .drag-bar {\n  height: 20px;\n  width: 100%;\n  padding: 2px;\n  border-bottom: 1px solid #606060;\n  background-color: #224;\n}\n.pump-control-pannel .speed-set-tool {\n  margin: 5px;\n}\n.pump-control-pannel .current-speed {\n  background-color: #000;\n  display: inline-block;\n  padding: 3px;\n  width: 70px;\n  height: 22px;\n}\n.pump-control-pannel .pump-start-btn,\n.pump-control-pannel .pump-stop-btn {\n  background-color: #0086B3;\n  width: 40%;\n  margin-left: 5%;\n  margin-top: 8px;\n}\n.pump-control-pannel.active {\n  display: block;\n}\n.pump-component {\n  position: absolute;\n}\n.PMSControll .MSB690Ctrl-box {\n  width: 80%;\n  height: 200px;\n  border: 1px dashed #999;\n  margin: 30px auto 0;\n}\n.ias {\n  width: 1600px;\n  height: 1200px;\n  background-color: #00275D;\n}\n.ias .head {\n  width: 100%;\n  height: 50px;\n}\n.ias .head .header-border {\n  border: 1px solid #606060;\n}\n.ias .head .headerItem {\n  float: left;\n}\n.ias .head .logo {\n  width: 176px;\n  padding-top: 14px ;\n  text-align: center;\n}\n.ias .head .displaybar-menu {\n  width: 960px;\n}\n.ias .head .displaybar-menu .displaybar {\n  height: 22px;\n  background-color: #000;\n  border: 1px solid #606060;\n  margin-bottom: 3px;\n  padding-left: 10px;\n  color: #f00;\n}\n.ias .head .displaybar-menu .category-item {\n  float: left;\n  position: relative;\n  height: 24px;\n  border: 1px solid #606060;\n  width: 120px;\n  text-align: center;\n}\n.ias .head .displaybar-menu .category-item:hover {\n  border-color: #fff;\n}\n.ias .head .displaybar-menu .category-item .category-item-name {\n  display: block;\n  width: 100%;\n  line-height: 21px;\n}\n.ias .head .displaybar-menu .category-item .system-items {\n  width: 190px;\n  position: absolute;\n  top: 110%;\n  left: 0;\n  background-color: #00275D;\n  z-index: 1000;\n  cursor: pointer;\n}\n.ias .head .displaybar-menu .category-item .system-item {\n  border: 2px solid transparent;\n  margin-bottom: 5px;\n  padding-left: 8px;\n}\n.ias .head .displaybar-menu .category-item .system-item:hover {\n  border-color: #fff;\n}\n.ias .head .displaybar-menu .system-items {\n  display: none;\n  text-align: left;\n  border: 2px solid #000;\n}\n.ias .head .displaybar-menu .system-items.active {\n  display: block;\n}\n.ias .head .alarms {\n  border: 1px solid #606060;\n  height: 50px;\n  width: 112px;\n  background-color: #f00;\n  line-height: 25px;\n}\n.ias .head .alarms .alarm-count {\n  width: 70%;\n  text-align: center;\n}\n.ias .head .alarms .alarm-select {\n  position: relative;\n  width: 30%;\n  height: 100%;\n  border: 2px solid transparent;\n}\n.ias .head .alarms .alarm-select .alarm-select-head {\n  display: inline-block;\n  width: 100%;\n  height: 100%;\n}\n.ias .head .alarms .alarm-select:hover {\n  border-color: #fff;\n}\n.ias .head .alarms .alarm-select .alarm-items {\n  position: absolute;\n  background-color: #00275D;\n  top: 110%;\n  right: -3px;\n  width: 112px;\n  display: none;\n  border: 2px solid #000;\n}\n.ias .head .alarms .alarm-select .alarm-items .alarm-item {\n  padding-left: 8px;\n  border: 1px solid transparent;\n}\n.ias .head .alarms .alarm-select .alarm-items .alarm-item:hover {\n  border-color: #fff;\n}\n.ias .head .alarms .alarm-select .alarm-items.active {\n  display: block;\n}\n.ias .head .silence {\n  border: 1px solid #606060;\n  padding: 0 3px;\n  text-align: center;\n  height: 100%;\n  width: 112px;\n}\n.ias .head .silence .silence-btn {\n  height: 30px;\n  line-height: 40px;\n  font-size: 16px;\n}\n.ias .head .silence .EB-select {\n  height: 20px;\n}\n.ias .head .time-design {\n  margin-left: 2px;\n  width: 224px;\n}\n.ias .head .time-design .td-com {\n  height: 24px;\n  line-height: 24px;\n  text-align: center;\n}\n.ias .head .time-design .system-time {\n  border: 1px solid #606060;\n  height: 24px;\n  line-height: 24px;\n  text-align: center;\n  margin-bottom: 2px;\n}\n.ias .head .time-design .design {\n  border: 1px solid #606060;\n  background-color: #00c000;\n  height: 24px;\n  line-height: 24px;\n  text-align: center;\n}\n.ias .main-window {\n  width: 96%;\n  height: 1090px;\n  margin: 6px auto;\n  border: 1px solid #333;\n  border-radius: 10px;\n  box-shadow: 3px 3px 5px;\n  background-color: #404040;\n}\n.ias .foot {\n  width: 100%;\n  height: 60px;\n}\n", ""]);
 
 // exports
 

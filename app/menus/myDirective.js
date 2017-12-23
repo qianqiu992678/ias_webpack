@@ -3,7 +3,33 @@
  */
 module.exports=function(iasApp){
 	//系统单页顶部标题
-	iasApp.directive('iasTpl', function () {
+	iasApp
+	.controller('pumpBodyCtrl',['$scope', function ($scope) {
+	    console.log('pumpBodyCtrl');
+	    $('.pump-body').click(function (e) {
+	        $(e.target).parents('.pump-component').children('.pump-control-pannel').addClass('active')
+	    })
+	}])
+	.controller('pumpComponentCtrl',['$scope', function ($scope) {
+	    console.log('pumpComponentCtrl');
+	
+	}])
+	.controller('pumpControlPannelCtrl',['$scope','$rootScope', function ($scope,$rootScope) {
+	    console.log('pumpControlPannelCtrl');
+	    $('.close').click(function (e) {
+	        $(e.target).parents('.pump-control-pannel').removeClass('active');
+	    });
+	    $('.pump-start-btn').click(function (e) {
+	        console.log('start pump');
+	        $rootScope.pumpIsRunningControl(e,1);
+	
+	    });
+	    $('.pump-stop-btn').click(function (e) {
+	        console.log('stop pump');
+	        $rootScope.pumpIsRunningControl(e,false);
+	    });
+	}])
+	.directive('iasTpl', function () {
 	    return {
 	        restrict:'EA',
 	        scope:{
