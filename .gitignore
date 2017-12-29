@@ -3,4 +3,5 @@
 .git
 .project
 node_modules
-New Folder
+
+/app/js/bundle.js
