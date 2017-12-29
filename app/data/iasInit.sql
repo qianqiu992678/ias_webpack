@@ -56,6 +56,6 @@ CREATE TABLE pumps(
     currentSpeed INT
 );
 INSERT INTO pumps VALUES
-(NULL,'ballastdrillPump','1800','50',true,false,'900'),
-(NULL,'freshwaterPump','1800','50',true,false,'800'),
-(NULL,'fueloilPump','1800','50',true,false,'700');
+(NULL,'ballastdrillPump','1800','50',true,false,'0'),
+(NULL,'freshwaterPump','1800','50',true,false,'0'),
+(NULL,'fueloilPump','1800','50',true,false,'0');

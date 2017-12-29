@@ -14,6 +14,7 @@ module.exports=function(iasApp){
 	    console.log('pumpComponentCtrl');
 	
 	}])
+	//泵控制面板指令控制器
 	.controller('pumpControlPannelCtrl',['$scope','$rootScope', function ($scope,$rootScope) {
 	    console.log('pumpControlPannelCtrl');
 	    $('.close').click(function (e) {
@@ -86,7 +87,8 @@ module.exports=function(iasApp){
 	        restrict:'EAC',
 	        scope:{
 	            speed:'@',
-	            pumpName:'@'
+	            pumpName:'@',
+	            pumpId:'@'
 	        },
 	        templateUrl:'app/menus/directiveTpl/pumpControlPannel.html',
 	        replace:true,
@@ -102,7 +104,8 @@ module.exports=function(iasApp){
 	            lR:'@',
 	            isR:'@',
 	            sp:'@',
-	            pumpName:'@'
+	            pumpName:'@',
+	            pumpId:'@'
 	        },
 	        templateUrl:'app/menus/directiveTpl/iasPumpComponent.html',
 	        replace:true,

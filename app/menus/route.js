@@ -420,8 +420,8 @@ module.exports=function(iasApp){
 		                console.log('接收的泵浦信息数据为：',data);
 		                $rootScope.pumpMessage=[];
 		                $(data).each(function (index,value) {
-		                    value.isRunning=value.isRunning==1?'#0f0':'#fff';
-		                    value.isRemote=value.isRemote==1?'#fff':'#00f';
+		                    //value.isRunning=value.isRunning==1?'#0f0':'#fff';
+		                    //value.isRemote=value.isRemote==1?'#fff':'#00f';
 		                    $rootScope.pumpMessage[value.pumpName]=value;
 		
 		                });
@@ -439,10 +439,10 @@ module.exports=function(iasApp){
 		    $rootScope.pumpIsRunningControl= function (e,isRunning) {
 		
 		        console.log('接收的参数为：', e.target,isRunning);
-		        var pumpName=$(e.target).parent().attr('pump-name');
-		        console.log('发送的参数为：',pumpName,isRunning)
+		        var pumpId=$(e.target).parent().attr('pump-id');
+		        console.log('发送的参数为：',pumpId,isRunning)
 		        $.ajax({
-		            url:'app/data/pumpIsRunningControl.php?pumpName='+pumpName+'&isRunning='+isRunning,
+		            url:'app/data/pumpIsRunningControl.php?pumpId='+pumpId+'&isRunning='+isRunning,
 		            success: function (data) {
 		                console.log(data,1234);
 		                $rootScope.getPumpMessage();

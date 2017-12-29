@@ -47,10 +47,17 @@
 			l-r="{{pumpMessage['ballastdrillPump'].isRemote}}"
 		    is-r="{{pumpMessage['ballastdrillPump'].isRunning}}" 
 		    sp="{{pumpMessage['ballastdrillPump'].currentSpeed}}"
-		    pump-name="{{pumpMessage['ballastdrillPump'].pumpName}}">
+		    pump-name="{{pumpMessage['ballastdrillPump'].pumpName}}"
+		    pump-id="{{pumpMessage['ballastdrillPump'].pumpId}}">
 		</ias-pump-component>
 	</li>
-	<li class="testArea"></li>
+	<li class="testArea">
+		<h2>svg练习</h2>
+		<object data="app/menus/svg/circle.svg" width="300" 
+			height="100" type="image/svg+xml" />
+		<embed src="app/menus/svg/circle.svg" width="200" 
+				height="100" type="image/svg+xml" />
+	</li>
 	<li class="testArea"></li>
 	<li class="testArea"></li>
 	<li class="testArea"></li>
