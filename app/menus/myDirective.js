@@ -3,7 +3,33 @@
  */
 module.exports=function(iasApp){
 	//系统单页顶部标题
-	iasApp.directive('iasTpl', function () {
+	iasApp
+	.controller('pumpBodyCtrl',['$scope', function ($scope) {
+	    console.log('pumpBodyCtrl');
+	    $('.pump-body').click(function (e) {
+	        $(e.target).parents('.pump-component').children('.pump-control-pannel').addClass('active')
+	    })
+	}])
+	.controller('pumpComponentCtrl',['$scope', function ($scope) {
+	    console.log('pumpComponentCtrl');
+	
+	}])
+	.controller('pumpControlPannelCtrl',['$scope','$rootScope', function ($scope,$rootScope) {
+	    console.log('pumpControlPannelCtrl');
+	    $('.close').click(function (e) {
+	        $(e.target).parents('.pump-control-pannel').removeClass('active');
+	    });
+	    $('.pump-start-btn').click(function (e) {
+	        console.log('start pump');
+	        $rootScope.pumpIsRunningControl(e,1);
+	
+	    });
+	    $('.pump-stop-btn').click(function (e) {
+	        console.log('stop pump');
+	        $rootScope.pumpIsRunningControl(e,false);
+	    });
+	}])
+	.directive('iasTpl', function () {
 	    return {
 	        restrict:'EA',
 	        scope:{
@@ -12,9 +38,9 @@ module.exports=function(iasApp){
 	        template:'<div><div class="back-ahead"><a href class="back">《</a><a href class="ahead">》</a></div><div class="title-tag">{{sysName}}</div></div> ',
 	        replace:true
 	    }
-	});
+	})
 	//舱室信息
-	iasApp.directive('iasTankMessage', function () {
+	.directive('iasTankMessage', function () {
 	    return{
 	        restrict:'EAC',
 	        scope:{
@@ -23,12 +49,12 @@ module.exports=function(iasApp){
 	            volume:'@',
 	            quality:'@'
 	        },
-	        templateUrl:'app/templates/directiveTpl/tankMessageTpl.html',
+	        templateUrl:'app/menus/directiveTpl/tankMessageTpl.html',
 	        replace:true
 	    }
-	});
+	})
 	//色块指令
-	iasApp.directive('iasColorBlock', function () {
+	.directive('iasColorBlock', function () {
 	    return{
 	        restrict:'EAC',
 	        scope:{
@@ -36,12 +62,12 @@ module.exports=function(iasApp){
 	            he:'@',
 	            color:'@'
 	        },
-	        templateUrl:'app/templates/directiveTpl/colorBlock.html',
+	        templateUrl:'app/menus/directiveTpl/colorBlock.html',
 	        replace:true
 	    }
-	});
+	})
 	//泵浦指令
-	iasApp.directive('iasPumpBody', function () {
+	.directive('iasPumpBody', function () {
 	    return{
 	        restrict:'EAC',
 	        scope:{
@@ -49,26 +75,26 @@ module.exports=function(iasApp){
 	            localRemote:'@',
 	            isRunning:'@'
 	        },
-	        templateUrl:'app/templates/directiveTpl/pumpBody.html',
+	        templateUrl:'app/menus/directiveTpl/pumpBody.html',
 	        replace:true,
 	        controller: 'pumpBodyCtrl'
 	    }
-	});
+	})
 	//泵浦弹出控制窗口
-	iasApp.directive('iasPumpControlPannel', function () {
+	.directive('iasPumpControlPannel', function () {
 	    return{
 	        restrict:'EAC',
 	        scope:{
 	            speed:'@',
 	            pumpName:'@'
 	        },
-	        templateUrl:'app/templates/directiveTpl/pumpControlPannel.html',
+	        templateUrl:'app/menus/directiveTpl/pumpControlPannel.html',
 	        replace:true,
 	        controller:'pumpControlPannelCtrl'
 	    }
-	});
+	})
 	//完整泵浦
-	iasApp.directive('iasPumpComponent', function () {
+	.directive('iasPumpComponent', function () {
 	    return{
 	        restrict:'EAC',
 	        scope:{
@@ -78,7 +104,7 @@ module.exports=function(iasApp){
 	            sp:'@',
 	            pumpName:'@'
 	        },
-	        templateUrl:'app/templates/directiveTpl/iasPumpComponent.html',
+	        templateUrl:'app/menus/directiveTpl/iasPumpComponent.html',
 	        replace:true,
 	        controller:'pumpComponentCtrl'
 	    }

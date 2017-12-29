@@ -1,9 +1,11 @@
+@import "test.less";
 @import "variables.less";
 @import "gs.less";
 @import "BallastDrillW.less";
 @import "directive.less";
 @import "bilge.less";
-//.ias{
+@import "PMSControll.less";
+//.ias{ 
 //  font-size: @g-font-size;
 //  width:100px;
 //  height:100px;
@@ -19,7 +21,7 @@
 //  .second{
 //    .fontSize(@double-g-font-size);
 //    padding:3px;
-//  }
+//  } 
 //}
 
 .ias{ 
@@ -72,6 +74,7 @@
           left:0;
           background-color:@theme-color;
           z-index: 1000;
+          cursor: pointer;
         }
         .system-item{
           border:2px solid transparent;
